@@ -17,41 +17,106 @@
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
+                
             }
+            div {
+                border-style: solid;
+                
+}
+
+        #app { 
+            
+    margin: 0px auto;
+    text-align: center;
+    }
         </style>
     </head>
     <body class="antialiased">
         
-        <div id="app">
-    <example-component></example-component>
-    <prova></prova>
-
-    <treestatic></treestatic>
-
-    <section>
+        <div   id="app">
+   
+    <div style="float:left; margin: 0 50px;">
+        <h1>Controller</h1>
+        <h2>On/Off
+            <div style="float:right">        
+        <togglevs></togglevs>
+    </div>
+        </h2>
+        <hr size="20">
+        <h1>Subsystems</h1>
+        <state></state>
+   <!-- <section>
       <toggle
         name="state"
         :options="[{ label: 'On', val: 0 }, { label: 'Off', val: 1 }]"
         v-model="stateValue"
       />
-    </section>
-    
-      <h2>State</h2>
-      
-    
+    </section>-->
+    <hr size="20">
+    <state></state> 
     <state></state>
-    
-    <message></message>
-    <cruscotto></cruscotto>
-    <div>
-        <messagebox></messagebox>
+    <h2>SHA0
+            <div style="float:right">        
+        <togglevs></togglevs>
     </div>
-    <grafico></grafico>
+        </h2>
+    <h2>Boiler
+            <div style="float:right">        
+        <togglevs></togglevs>
+    </div>
+        </h2>
+    <h2>chillen
+            <div style="float:right">        
+        <togglevs></togglevs>
+    </div>
+        </h2>
+    <h2>Summer
+            <div style="float:right">        
+        <togglevs></togglevs>
+    </div>
+        </h2>
+   
+        
+    
+   
+    </div>
+    <div style="float:left">
+        <h1>Diagrams</h1>
+    <albero :msg="ciao" ></albero>
+    <hr></hr>
+     <h1>KPI</h1>
+    <div style="float:left; margin: -50px 0;">
+    <cruscotto></cruscotto>
+    </div>
+    <div>
+    <cruscotto :prova2="20"></cruscotto>
+    </div>
+    
+    </div>
+
+    <div>
+        <h1>Messages</h1>
+        <messagebox></messagebox>
+    
+        <hr></hr>
+        <h1>History</h1>
+        <grafico :points="{{$prova}}" ></grafico>
+        
+    </div>
+    <message></message>
+    
     
         </div>
-  
+        @foreach ($points as $point)
+    <h2>x{{ $point->id }}   {{ $point->x }}</h2>
+    <h2>y{{ $point->id }}   {{ $point->y }}</h2>
+   
+   
+    @endforeach
+   <h2>{{ $prova }}</h2>
+    <h2>{{ $prova2 }}</h2>
     </body>
-    
+    <treestatic ></treestatic>
     <script src="{{ asset('/js/app.js')}}"></script>
 
 </html>

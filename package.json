@@ -26,7 +26,7 @@
     },
     "dependencies": {
         "@balkangraph/orgchart.js": "^6.1.998",
-        "@vue/cli-plugin-babel": "^4.5.13",
+        "@vue/cli-plugin-babel": "^4.1.1",
         "chartkick": "^4.0.5",
         "element-ui": "^2.6.3",
         "fusioncharts": "^3.14.0-sr.1",

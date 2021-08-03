@@ -1,6 +1,6 @@
 <template>
   <div id='bott'>
-    <h1>Button Radio</h1>
+
     <div class="btn-group">
       <span
         :class="{ 'achieve-btn': status === 'achieve' }"
@@ -8,12 +8,7 @@
         class="status-btn"
         >S1</span
       >
-      <span
-        :class="{ 'current-btn': status === 'current' }"
-        @click="chooseStatus('current')"
-        class="status-btn"
-        >S2</span
-      >
+     
       <span
         :class="{ 'unlock-btn': status === 'unlock' }"
         @click="chooseStatus('unlock')"
@@ -44,31 +39,11 @@ export default {
 };
 </script>
 
-</script>
 
-<script>
-export default {
-  name: "ButtonRadio",
-  data() {
-    return {
-      status: ""
-    };
-  },
-  methods: {
-    chooseStatus(type) {
-      if (type === this.status) {
-        this.status = "";
-      } else {
-        this.status = type;
-      }
-    }
-  }
-};
-</script>
 
 <style lang="scss" scoped>
 .btn-group {
-  width: 240px;
+  width: 150px;
   border-radius: 8px;
   border: 1px solid #e2e2ea;
   height: 34px;
@@ -83,10 +58,10 @@ export default {
   cursor: pointer;
   display: inline-block;
   color: rgba(105, 105, 116, 1);
-  line-height: 34px;
+  line-height: 30px;
   text-align: center;
 
-  width: 80px;
+  width: 70px;
   box-sizing: border-box;
 
   &:hover {
@@ -113,22 +88,7 @@ export default {
   }
 }
 
-.current-btn {
-  background: rgba(255, 246, 236, 1);
-  position: relative;
-  color: rgba(255, 140, 8, 1);
 
-  &:after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: -1px;
-    bottom: -1px;
-    left: -1px;
-    right: -1px;
-    border: 1px solid rgba(255, 140, 8, 1);
-  }
-}
 
 .unlock-btn {
   background: rgba(255, 246, 236, 1);

@@ -4,7 +4,7 @@
     ref="multipleTable"
     :data="tableData"
     tooltip-effect="dark"
-    style="width: 100%"
+    style="width: 33%"
     @selection-change="handleSelectionChange">
     <el-table-column
       type="selection"
@@ -26,7 +26,7 @@
       show-overflow-tooltip>
     </el-table-column>
   </el-table>
-  <div style="margin-top: 20px">
+  <div style="margin-top: 20px ">
     <el-button @click="toggleSelection([tableData[1], tableData[2]])">applica</el-button>
     <el-button @click="toggleSelection()">applica</el-button>
   </div>
@@ -38,6 +38,7 @@
   export default {
     data() {
       return {
+        
         tableData: [{
           date: '2016-05-03',
           name: 's1',

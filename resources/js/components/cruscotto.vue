@@ -10,16 +10,6 @@
       ref="fc"
     ></fusioncharts>
     <button v-on:click="update">Update</button>
-    <fusioncharts
-      :type="type"
-      :width="width"
-      :height="height"
-      :dataFormat="dataFormat"
-      :dataSource="dataSource"
-      :dataEmptyMessage="message"
-      :events="events"
-      ref="fc"
-    ></fusioncharts>
   </div>
 </template>
 
@@ -30,7 +20,8 @@ import VueFusionCharts from "vue-fusioncharts";
 import FusionCharts from "fusioncharts";
 import Charts from "fusioncharts/fusioncharts.charts";
 import Widgets from "fusioncharts/fusioncharts.widgets";
-import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+import FusionTheme from "fusioncharts/themes/fusioncharts.theme.zune";
+
 
 Vue.use(VueFusionCharts, FusionCharts, Charts, Widgets, FusionTheme);
 
@@ -39,8 +30,13 @@ console.log(FusionCharts);
 export default {
   name: "App",
 
+  props: [
+            'prova2'
+        ],
+
   data: function() {
     return {
+      
       typeWidget: "angulargauge",
       type: "column2d",
       width: "600",
@@ -53,7 +49,7 @@ export default {
           subcaption: "Valore Atteso",
           lowerLimit: "0",
           upperLimit: "100",
-          theme: "fusion"
+          theme: "zune"
         },
         colorRange: {
           color: [
@@ -82,7 +78,7 @@ export default {
         dials: {
           dial: [
             {
-              value: "80"
+              value: this.prova2
             }
           ]
         }
@@ -94,7 +90,7 @@ export default {
           xAxisName: "Month",
           yAxisName: "Revenues (In USD)",
           numberPrefix: "$",
-          theme: "fusion"
+          theme: "zune"
         }
         // data: [
         //   {
@@ -164,8 +160,13 @@ export default {
         }
       }
     };
+  },
+ mounted() {
+    this.dataSourceWidget.dials.dial.push(prova)
   }
-};
+  
+  }
+;
 </script>
 
 <style>

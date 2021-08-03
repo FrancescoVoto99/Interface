@@ -29,6 +29,9 @@ Vue.component('cruscotto', require('./components/cruscotto.vue').default);
 Vue.component('newtree', require('./components/newtree.vue').default);
 Vue.component('messagebox', require('./components/MessageBox.vue').default);
 Vue.component('grafico', require('./components/grafico.vue').default);
+Vue.component('togglevs', require('./components/togglevs.vue').default);
+Vue.component('albero', require('./components/composealbero.vue').default);
+
 import {
     Table,
     TableColumn,
