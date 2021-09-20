@@ -3,31 +3,37 @@
 
     <div class="btn-group">
       <span
-        :class="{ 'achieve-btn': status === 'achieve' }"
-        @click="chooseStatus('achieve')"
+        :class="{ 'achieve-btn': status === '1' }"
+        @click="chooseStatus('1')"
         class="status-btn"
-        >S1</span
+        >1</span
       >
      
       <span
-        :class="{ 'unlock-btn': status === 'unlock' }"
-        @click="chooseStatus('unlock')"
+        :class="{ 'unlock-btn': status === '2' }"
+        @click="chooseStatus('2')"
         class="status-btn"
-        >S3</span
+        >2</span
       >
     </div>
+    
   </div>
 </template>
 
 <script>
 export default {
   name: "ButtonRadio",
+  props: [
+            'setstatus'
+        ],
   data() {
     return {
       status: "",
     };
   },
   methods: {
+
+
     chooseStatus(type) {
       if (type === this.status) {
         this.status = "";
@@ -36,6 +42,9 @@ export default {
       }
     },
   },
+   mounted() {
+        this.status = this.setstatus;
+        }
 };
 </script>
 

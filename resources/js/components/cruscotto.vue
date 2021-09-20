@@ -2,14 +2,14 @@
   <div id="app">
     <fusioncharts
       :type="typeWidget"
-      :width="width"
-      :height="200"
+      :width="250"
+      :height="250"
       :dataFormat="dataFormat"
       :dataSource="dataSourceWidget"
       :events="events"
       ref="fc"
     ></fusioncharts>
-    <button v-on:click="update">Update</button>
+
   </div>
 </template>
 

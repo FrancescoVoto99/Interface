@@ -1,16 +1,23 @@
 <template>
   <div class="wrapper" :class="{'active-wrapper': status}" @click="status = !status">
-    <div class="toggle" :class="{'active-toggle': status}"/>
+    <div  class="toggle" :class="{'active-toggle': status}"/>
   </div>
 </template>
 
 <script>
 export default {
+  props: [
+            'setstatus'
+        ],
   data() {
     return {
-      status: true
+      status: ""
     };
-  }
+  },
+     created() {
+
+        this.status = this.setstatus;
+        },
 };
 </script>
 

@@ -15,9 +15,15 @@ export default {
   components: {
     //HelloWorld
   },
+  props: [
+    'nodi'
+  ],
+    
 
   mounted() {
     this.getChart();
+      this.chart.getNode(1);
+      document.querySelectorAll("[data-n-id='1'] rect").style.background = 'red';
   },
   computed: {
     getChart() {
@@ -25,28 +31,17 @@ export default {
           
         chart: new OrgChart(document.getElementById("orgchart"), {
             enableSearch: false,
-            mouseScrool: OrgChart.action.none,
-            enableKeyNavigation:true,
+            mouseScrool: OrgChart.action.none, 
+            enableKeyNavigation: true,
             
 min : true,
             
-            scaleInitial : 0.5,
+            scaleInitial : 0.6,
             orientation: OrgChart.orientation.bottom,
-           
-
-          
           nodeBinding: {
-            field_0: "name"
+            field_0: "nome"
           },
-          nodes: [
-      { id: 1, name: "KPI6", title: "Tytle1" },
-      { id: 2, pid: 1, name: "KPI4", title: "Tytle2" },
-      { id: 3, pid: 1, name: "KPI5", title: "Tytle3" },
-      { id: 4, pid: 2, name: "KPI1", title: "Tytle4" },
-    { id: 5, pid: 3, name: "KPI2", title: "Tytle4" },
-    { id: 6, pid: 3, name: "KPI3", title: "Tytle4" }
-
-    ]
+          nodes: this.nodi,
         })
       };
     }

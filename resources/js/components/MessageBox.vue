@@ -55,15 +55,7 @@
           date: '2016-05-01',
           name: 's4',
           address: 'lore4'
-        }, {
-          date: '2016-05-08',
-          name: 's5',
-          address: 'lore5'
-        }, {
-          date: '2016-05-06',
-          name: 's6',
-          address: 'lore6'
-        }],
+        },],
         multipleSelection: []
       }
     },

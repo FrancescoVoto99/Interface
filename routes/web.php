@@ -20,3 +20,5 @@ Route::get('/', function () {
 
 Route::get('/interface', 'App\Http\Controllers\InterfaceController@interface')
         ->name('interface');
+
+Route::get('firebase','App\Http\Controllers\FirebaseController@index');
