@@ -1,8 +1,10 @@
 <template>
+
   <div>
+    <h2>Messaggi</h2>
 <el-table
     ref="multipleTable"
-    :data="tableData"
+    :data="this.listmsg"
     tooltip-effect="dark"
     style="width: 33%"
     @selection-change="handleSelectionChange">
@@ -11,18 +13,13 @@
       width="55">
     </el-table-column>
     <el-table-column
+      prop="id"
       label="sistema"
       width="120">
-      <template slot-scope="scope">{{ scope.row.date }}</template>
     </el-table-column>
     <el-table-column
-      prop="name"
-      label="info"
-      width="120">
-    </el-table-column>
-    <el-table-column
-      prop="address"
-      label="prova"
+      prop="msg"
+      label="messaggio"
       show-overflow-tooltip>
     </el-table-column>
   </el-table>
@@ -36,26 +33,12 @@
 
 <script>
   export default {
+     props: [
+            'listmsg',
+            
+        ],
     data() {
       return {
-        
-        tableData: [{
-          date: '2016-05-03',
-          name: 's1',
-          address: 'lore1'
-        }, {
-          date: '2016-05-02',
-          name: 's2',
-          address: 'lore2'
-        }, {
-          date: '2016-05-04',
-          name: 's3',
-          address: 'lore3'
-        }, {
-          date: '2016-05-01',
-          name: 's4',
-          address: 'lore4'
-        },],
         multipleSelection: []
       }
     },

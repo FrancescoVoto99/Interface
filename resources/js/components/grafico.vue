@@ -9,9 +9,7 @@
         ref="chart"
       ></highcharts>
     </div>
-    <div>
-
-    </div>
+    
     <div class="sposta">
   <div class="btn-group">
       <span
@@ -115,13 +113,10 @@ export default {
 
 
 <style lang="scss" scoped>
-.chartElem{
-  position: relative;
-}
 
 .sposta {
   position: relative;
-  left: 10%;
+  margin-left: 50px;
 
 }
 .btn-group {

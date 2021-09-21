@@ -48,7 +48,7 @@ export default {
 
 <style lang="scss" scoped>
 .btn-group {
-  width: 240px;
+  width: 255px;
   border-radius: 8px;
   border: 1px solid #e2e2ea;
   height: 34px;
@@ -63,7 +63,7 @@ export default {
   cursor: pointer;
   display: inline-block;
   color: rgba(105, 105, 116, 1);
-  line-height: 34px;
+  line-height: 30px;
   text-align: center;
 
   width: 80px;

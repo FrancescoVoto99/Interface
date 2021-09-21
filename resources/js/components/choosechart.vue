@@ -1,7 +1,9 @@
 <template>
   <div>
       <div>
-        
+          <keep-alive>
+        <cruscotto  :prova2="valore"></cruscotto>
+        </keep-alive>
       </div>
  
     <div class="btn-group">
@@ -33,15 +35,17 @@ export default {
         ],
   data() {
     return {
-      status: ""
+      status: "",
+      valore:this.points.KPI1.vAtteso,
     };
   },
   methods: {
     chooseStatus(type) {
       if (type === this.status) {
         this.status = "";
-        this.points=this.points.KPI1;
+        
       } else {
+        this.valore=this.points.KPI3.vAtteso;
         this.status = type;
       }
     }

@@ -48,17 +48,7 @@ class FirebaseController extends Controller
 
         $database = $firebase->getDatabase();
     
-
-
-            $newPost = $database
-            ->getReference('blog/posts');
-            echo '<pre>';
-            print_r($newPost->getvalue());
-
-
             $newPost2 = $database->getReference();
-            echo '<pre>';
-            print_r($newPost2->getChild("cruscotto")->getvalue());
             return view('welcome')
             ->with('points', $points)
                           ->with('prova', $string)

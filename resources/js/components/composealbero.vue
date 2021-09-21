@@ -22,8 +22,7 @@ export default {
 
   mounted() {
     this.getChart();
-      this.chart.getNode(1);
-      document.querySelectorAll("[data-n-id='1'] rect").style.background = 'red';
+      //document.querySelectorA("[ data - n - id ]").style.background = 'red';
   },
   computed: {
     getChart() {
@@ -36,7 +35,7 @@ export default {
             
 min : true,
             
-            scaleInitial : 0.6,
+            scaleInitial : 0.5,
             orientation: OrgChart.orientation.bottom,
           nodeBinding: {
             field_0: "nome"
@@ -58,8 +57,10 @@ min : true,
   color: #2c3e50;
   margin-top: 0px;
 }
+ [ node-id ] { 
+        fill : #750000; } 
 h3 {
-  margin: 40px 0 0;
+  margin:  0 0;
 }
 ul {
   list-style-type: none;
@@ -74,8 +75,8 @@ a {
 }
 #orgchart {
                             
-                            width: 600px;
-                            height:400px;
+                            width: 500px;
+                            height:300px;
                             overflow: hidden;
  }
 rect:focus{

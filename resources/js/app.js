@@ -33,6 +33,7 @@ Vue.component('togglevs', require('./components/togglevs.vue').default);
 Vue.component('albero', require('./components/composealbero.vue').default);
 Vue.component('state3', require('./components/state3.vue').default);
 Vue.component('choosechart', require('./components/choosechart.vue').default);
+Vue.component('stateez', require('./components/stateEZ.vue').default);
 
 import {
     Table,

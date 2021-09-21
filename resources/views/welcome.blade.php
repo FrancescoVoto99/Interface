@@ -35,7 +35,7 @@
         
         <div   id="app">
    
-    <div style="float:left; margin: 0 50px;">
+    <div style="float:left; margin: 0 50px; width=33%;">
         <h2>Simulatore</h2>
         <h3>On/Off      
         <togglevs></togglevs>
@@ -44,6 +44,7 @@
         
         <h2>Stato Sistemi</h2>
         <h3>S1</h3>
+        <hr>
     <state3 :setstatus="'{{$data['s1']}}'"></state3>
     <h3>S2</h3>
     <state :setstatus="'{{$data['s2']}}'"></state>
@@ -60,11 +61,11 @@
     </div>
         </h2>
    
-    <h2>Summer
-            <div style="float:right">        
-        <togglevs></togglevs>
-    </div>
-        </h2>
+    <h2>s6</h2>
+              
+    <stateez :setstatus="'{{$data['s6']}}'" ></stateez>
+    
+        
    
         
     
@@ -75,42 +76,24 @@
     <albero :nodi="{{json_encode($data['albero'])}}" ></albero>
     <hr></hr>
     <hr></hr>
-    <h1>KPI</h1>
-    <div style="float:left;">
-    
-    <cruscotto  :prova2='{{$data["cruscotto"]["KPI1"]["vAttuale"]}}'></cruscotto>
-    </div>
-    <div>
-    
-    <cruscotto :prova2='{{$data["cruscotto"]["KPI1"]["vAtteso"]}}'></cruscotto>
-    </div>
-    
+
+    <cruscotto :setstatus="'1'"  :value='{{json_encode($data["cruscotto"])}}'></cruscotto>
     </div>
 
            
       
-        <messagebox></messagebox>
-    
+        <messagebox :listmsg="{{json_encode($data['messaggi'])}}"></messagebox>
         <hr></hr>
         <grafico  :setstatus="'1'" :points="{{json_encode($data['grafico'])}}" ></grafico>
     
         
-
         
-    </div> 
+        
+    </div>
 
-    <message></message>
-    
-    
         </div>
-
-
         
-
-
     </body>
-    <h6>{{json_encode($data['albero'])}}<h6>
-    <treestatic ></treestatic>
     <script src="{{ asset('/js/app.js')}}"></script>
 
 </html>
