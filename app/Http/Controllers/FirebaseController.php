@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\ServiceAccount;
 use \Kreait\Firebase\Database;
-use App\Models\graficosKPI1;
+use App\Models\messages;
+use App\Models\alberi;
+use App\Models\kpis;
 
 
 class FirebaseController extends Controller
@@ -18,26 +20,15 @@ class FirebaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct() {
+        $this->messages = new messages;
+        $this->alberi = new alberi;
+        $this->kpis = new kpis;
+    }
     public function index()
     {
-
-
-        $string='{name: "Series 2",
-            data:[';
-          $string2='';
-          $this->_KPI1points = new graficosKPI1;
-          $points = $this->_KPI1points->getAllpoints();
-          $prova = $this->_KPI1points->getAllpoints()->toArray();
-          $prova2 = $this->_KPI1points->getAllpoints()->toJson();
-          
-          foreach($prova as $result){
-     $string = $string . "[" . $result['x'] .",". $result['y']. "],"; 
-     $string2 = $string2 . "[" . $result['x'] .",". $result['y']. "],"; 
-    
-   
-  }
-  $string=$string ."]}";
-         
+        
+        $themessages=$this->kpis->getAllKpi();
   
         {
             $serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/tirocinio-975e9-firebase-adminsdk-f1gv5-7da7075f22.json');
@@ -50,13 +41,25 @@ class FirebaseController extends Controller
     
             $newPost2 = $database->getReference();
             return view('welcome')
-            ->with('points', $points)
-                          ->with('prova', $string)
-                          ->with('prova2', $prova2)
-                  ->with('prova3', $string2)
             ->with('data', $newPost2->getvalue())
-    ;
+            ->with('messages', $themessages);
         }
+    }
+    public function getMessage(){
+        $themessages=$this->messages->getAllMessages();
+        return $themessages;
+
+    }
+    public function getAlbero(){
+        $theNodes=$this->alberi->getAllNodes();
+        return $theNodes;
+
+    }
+
+    public function getKpi(){
+        $theKpi=$this->kpis->getAllKpi();
+        return $theKpi;
+
     }
 
     /**

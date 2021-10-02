@@ -15,13 +15,37 @@ export default {
   components: {
     //HelloWorld
   },
-  props: [
-    'nodi'
-  ],
+   data() {
+      return {
+        nodi:[]
+      }
+    },
     
 
   mounted() {
-    this.getChart();
+
+
+        axios.get('./albero').then((response) => {
+                // handle success
+                console.log(response.data);
+                
+          let idModified = response.data.map(
+               obj => {
+                  return {
+                "id" : obj.nodeId,
+                "pid":obj.	parentId,
+                "messaggio":obj.description,
+                "nome":obj.name,
+                "stato":obj.status
+                }
+                }
+                );
+
+                this.nodi = idModified;
+                this.getChart();
+              })
+      
+    
       //document.querySelectorA("[ data - n - id ]").style.background = 'red';
   },
   computed: {
@@ -76,7 +100,7 @@ a {
 #orgchart {
                             
                             width: 500px;
-                            height:300px;
+                            height:250px;
                             overflow: hidden;
  }
 rect:focus{

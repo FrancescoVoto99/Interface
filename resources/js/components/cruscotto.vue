@@ -1,6 +1,19 @@
 <template>
   <div id="app">
-   <h2>{{this.name}}</h2>
+    <h2 style="text-align: left;">KPI</h2>
+    <h3>Select KPI
+      
+    <select @change="chooseChart($event.target.value)">
+    <option :value="index" :key="val.name" v-for="(val, index) in this.kpis">
+      {{ val.name }}
+    </option>
+  </select>
+  </h3>
+  
+<hr style="border: 1px grey solid;">
+
+
+   <h2>{{this.nome}}</h2>
 <div>
     <fusioncharts style="float:left;"
       :type="typeWidget"
@@ -24,26 +37,9 @@
 
 </div>
 
-<hr>
-<hr size="20">
+
     
-  <div class="btn-group">
-      <span
-        :class="{ 'achieve-btn': status === '1'}"
-        @click="chooseStatus('1')"
-        class="status-btn"
-      >KPI1</span>
-      <span
-        :class="{ 'current-btn': status === '2'}"
-        @click="chooseStatus('2')"
-        class="status-btn"
-      >KPI2</span>
-      <span
-        :class="{ 'unlock-btn': status === '3'}"
-        @click="chooseStatus('3')"
-        class="status-btn"
-      >KPI3</span>
-  </div>
+ 
  </div>
 
 </template>
@@ -65,16 +61,11 @@ console.log(FusionCharts);
 export default {
   name: "App",
 
-  props: [
-            'value',
-            "setstatus",
-        ],
-
   data: function() {
     return {
-      status: "",
-      name:"KPI1- Confort",
+      kpis:[],
 
+      nome:"KPI1- Confort",
       typeWidget: "angulargauge",
       type: "column2d",
       dataFormat: "json",
@@ -134,33 +125,44 @@ export default {
       },
        dataSourceWidget2: {
         chart: {
+     gaugeOuterRadius: "90",
+      gaugeInnerRadius: "40",
+      pivotRadius: "10",
+       majorTMNumber: "9",
+      minorTMNumber: "4",
+      valueBelowPivot: "1",
+           showValue: "1",
+
        //   caption: "KPI3 -Confort",
           subcaption: "Valore Atteso",
           lowerLimit: "0",
           upperLimit: "100",
           theme: "zune",
-            valueBelowPivot: "1",
-           showValue: "1",
         },
         colorRange: {
-          color: [
+          color:[
             {
               minValue: "0",
-              maxValue: "25",
+              maxValue: "20",
               code: "#e44a00"
             },
             {
-              minValue: "25",
-              maxValue: "50",
+              minValue: "20",
+              maxValue: "40",
               code: "#ffa500"
             },
             {
-              minValue: "50",
-              maxValue: "75",
+              minValue: "40",
+              maxValue: "60",
               code: "#ffff00"
             },
             {
-              minValue: "75",
+              minValue: "60",
+              maxValue: "80",
+              code: "#82f72f"
+            },
+            {
+              minValue: "80",
               maxValue: "100",
               code: "#6baa01"
             }
@@ -196,42 +198,35 @@ export default {
     };
   },
   methods: {
-        chooseStatus(type) {
-      if (type === this.status) {
-        //this.status = "";
-        //this.name="";
-        //this.dataSourceWidget.dials.dial[0].value="";
-        //this.dataSourceWidget2.dials.dial[0].value="";
-      
-      } else {
-        this.status = type;
 
-        switch(type) {
-    case "1":
-      this.name="KPI1- Confort";
-    this.dataSourceWidget.dials.dial[0].value=this.value.KPI1.vAttuale;
-    this.dataSourceWidget2.dials.dial[0].value=this.value.KPI1.vAtteso;
-    break;
-    case "2":
-      this.name="KPI2- Confort";
-    this.dataSourceWidget.dials.dial[0].value=this.value.KPI2.vAttuale;
-    this.dataSourceWidget2.dials.dial[0].value=this.value.KPI2.vAtteso;
-    break;
-    case "3":
-      this.name="KPI3- Confort";
-    this.dataSourceWidget.dials.dial[0].value=this.value.KPI3.vAttuale;
-    this.dataSourceWidget2.dials.dial[0].value=this.value.KPI3.vAtteso;
-    break;}
- 
-}
-      
-    },
+    chooseChart(type) {
+       this.nome= this.kpis[type].name.concat("- Confort");
+    this.dataSourceWidget.dials.dial[0].value=this.kpis[type].vAttuale;
+    this.dataSourceWidget2.dials.dial[0].value=this.kpis[type].vAtteso;
+    }
+
     
   },
  mounted() {
-   this.status = this.setstatus;
-    this.dataSourceWidget.dials.dial[0].value=this.value.KPI1.vAttuale;
-    this.dataSourceWidget2.dials.dial[0].value=this.value.KPI1.vAtteso;
+            axios.get('./kpi').then((response) => {
+                // handle success
+                console.log(response.data);
+                
+          let idModified = response.data.map(
+               obj => {
+                  return {
+                "name" : obj.name,
+                "vAtteso":obj.especValue,
+                "vAttuale":obj.currValue,
+                }
+                }
+                );
+
+                this.kpis=idModified;
+                this.dataSourceWidget.dials.dial[0].value=this.kpis[0].vAttuale;
+                this.dataSourceWidget2.dials.dial[0].value=this.kpis[0].vAtteso;
+              })
+    
   }
   
   }
@@ -251,88 +246,47 @@ export default {
   left: 10%;
 
 }
-.btn-group {
-  width: 240px;
-  border-radius: 8px;
-  border: 1px solid #e2e2ea;
-  height: 34px;
-  font-size: 14px;
-  display: flex;
-justify-content: center;
-
-
-  & > span:not(:last-child) {
-    border-right: 1px solid rgba(226, 226, 234, 1);
-  }
-}
-
-.status-btn {
-  cursor: pointer;
-  display: inline-block;
-  color: rgba(105, 105, 116, 1);
-  line-height: 34px;
-  text-align: center;
-
-  width: 80px;
-  box-sizing: border-box;
-
-  &:hover {
-    color: rgba(255, 140, 8, 1);
-  }
-}
-
-.achieve-btn {
-  background: rgba(255, 246, 236, 1);
-  border-radius: 8px 0px 0px 8px;
+.custom-select{
   position: relative;
-  color: rgba(255, 140, 8, 1);
-
-  &:after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: -1px;
-    bottom: -1px;
-    left: -1px;
-    right: -1px;
-    border-radius: 8px 0px 0px 8px;
-    border: 1px solid rgba(255, 140, 8, 1);
-  }
+  display: block;
+  max-width: 300px;
+  min-width: 120px;
+  margin: 0 auto;
+  border: 1px solid #3C1C78;
+  background-color: #16013E;
+  z-index: 10;
 }
-
-.current-btn {
-  background: rgba(255, 246, 236, 1);
-  position: relative;
-  color: rgba(255, 140, 8, 1);
-
-  &:after {
-    content: "";
+  select{
+    margin-right: auto;
+    margin-left: auto;
+    border: 2px solid black;;
+    outline: black;
+    background: transparent;
+    border-radius: 10px;
     display: block;
+    padding: 5px 5px 5px 5px;
+    font-size: 17px;
+    color: black;
+  
+  &:after{
     position: absolute;
-    top: -1px;
-    bottom: -1px;
-    left: -1px;
-    right: -1px;
-    border: 1px solid rgba(255, 140, 8, 1);
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    line-height: 38px;
+    content: '\2228';
+    text-align: center;
+    color: #714BB9;
+    font-size: 24px;
+    border-left: 1px solid #3C1C78;
+    z-index: -1;
   }
-}
-
-.unlock-btn {
-  background: rgba(255, 246, 236, 1);
-  border-radius: 0 8px 8px 0px;
-  position: relative;
-  color: rgba(255, 140, 8, 1);
-
-  &:after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: -1px;
-    bottom: -1px;
-    left: -1px;
-    right: -1px;
-    border-radius: 0 8px 8px 0px;
-    border: 1px solid rgba(255, 140, 8, 1);
   }
-}
+  .move{
+      float:right;
+      margin:0px auto;
+      
+  }
+
 </style>

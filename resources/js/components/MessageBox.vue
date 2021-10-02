@@ -2,60 +2,72 @@
 
   <div>
     <h2>Messaggi</h2>
-<el-table
-    ref="multipleTable"
-    :data="this.listmsg"
-    tooltip-effect="dark"
-    style="width: 33%"
-    @selection-change="handleSelectionChange">
-    <el-table-column
-      type="selection"
-      width="55">
-    </el-table-column>
-    <el-table-column
-      prop="id"
-      label="sistema"
-      width="120">
-    </el-table-column>
-    <el-table-column
-      prop="msg"
-      label="messaggio"
-      show-overflow-tooltip>
-    </el-table-column>
-  </el-table>
-  <div style="margin-top: 20px ">
-    <el-button @click="toggleSelection([tableData[1], tableData[2]])">applica</el-button>
-    <el-button @click="toggleSelection()">applica</el-button>
+ 
+    
+  <div class="box">
+<ul :key="message.messageId" :value="message.content" v-for="message in listmsg">
+<li  >
+      <input type="radio" v-model="msgselected" name="msgselected"  :value="message.messageId"> {{message.content}}
+   </li> 
+    </ul>  
+   
   </div>
+  <hr>
+  <div id="add">
+  <el-button @click="Selection()">applica</el-button>
+ </div>
 
   </div>
+  
 </template>
 
 <script>
   export default {
-     props: [
-            'listmsg',
-            
-        ],
     data() {
       return {
-        multipleSelection: []
+        multipleSelection: [],
+        images:[{imgId:1},{imgId:2},{imgId:3}],
+        msgselected:1,
+        listmsg:[]
       }
     },
 
     methods: {
-      toggleSelection(rows) {
-        if (rows) {
-          rows.forEach(row => {
-            this.$refs.multipleTable.toggleRowSelection(row);
-          });
-        } else {
-          this.$refs.multipleTable.clearSelection();
-        }
+      Selection() {
+        document.getElementById("add").innerHTML = "You have selected: " + this.msgselected;
+      
       },
       handleSelectionChange(val) {
         this.multipleSelection = val;
       }
+    },
+      mounted()  {
+        console.log("response");
+        axios.get('./message').then((response) => {
+                // handle success
+                console.log(response.data);
+                //now this refers to your vue instance and this can access you data property
+                this.listmsg = response.data;
+              })
+      
+        
+
     }
+
   }
 </script>
+
+<style lang="scss" scoped>
+
+.box {
+  margin-left: 0;
+  border:1px solid #EEE;
+  overflow-y: auto;
+   width: 30%;
+  height: 100px;
+
+}
+#add{
+ margin-right:-100px;
+}
+</style>

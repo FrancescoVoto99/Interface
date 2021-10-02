@@ -22,3 +22,6 @@ Route::get('/interface', 'App\Http\Controllers\InterfaceController@interface')
         ->name('interface');
 
 Route::get('firebase','App\Http\Controllers\FirebaseController@index');
+Route::get('/message','App\Http\Controllers\FirebaseController@getMessage');
+Route::get('/albero','App\Http\Controllers\FirebaseController@getAlbero');
+Route::get('/kpi','App\Http\Controllers\FirebaseController@getKpi');

@@ -21,7 +21,6 @@
             }
             div {
                 border-style: solid;
-                
 }
 
         #app { 
@@ -33,67 +32,54 @@
     </head>
     <body class="antialiased">
         
-        <div   id="app">
+        <div id="app">
    
-    <div style="float:left; margin: 0 50px; width=33%;">
-        <h2>Simulatore</h2>
-        <h3>On/Off      
-        <togglevs></togglevs>
+    <div style="float:left; margin: 0px 50px; width=33%;">
+        <h2>Controller</h2>
     
-        </h2>
+        <togglevs  :options='{{json_encode($data["subsystems"]["FCU0"])}}'></togglevs>
+        <hr style="border: 1px grey solid;">
+
         
-        <h2>Stato Sistemi</h2>
-        <h3>S1</h3>
-        <hr>
-    <state3 :setstatus="'{{$data['s1']}}'"></state3>
-    <h3>S2</h3>
-    <state :setstatus="'{{$data['s2']}}'"></state>
-    <h3>S3</h3>
-    <state3 :setstatus="'{{$data['s3']}}'" ></state3>
-    <h2>S4
+  
             <div style="float:right">        
-        <togglevs :setstatus='{{$data["s4"]}}'></togglevs>
+        <subsystems :subsystems='{{json_encode($data["subsystems"])}}'></subsystems>
     </div>
-        </h2>
-    <h2>S5
-            <div style="float:right">        
-        <togglevs :setstatus='{{$data["s5"]}}'></togglevs>
-    </div>
-        </h2>
-   
-    <h2>s6</h2>
-              
-    <stateez :setstatus="'{{$data['s6']}}'" ></stateez>
-    
         
    
+
         
     
    
     </div>
     <div style="float:left">
-        <h1>Diagrams</h1>
-    <albero :nodi="{{json_encode($data['albero'])}}" ></albero>
-    <hr></hr>
-    <hr></hr>
+        <h2>Diagrams</h2>
+    <albero></albero>
+    
+    <hr style="border: 1px grey solid;">
 
-    <cruscotto :setstatus="'1'"  :value='{{json_encode($data["cruscotto"])}}'></cruscotto>
+
+    <cruscotto></cruscotto>
     </div>
 
            
       
-        <messagebox :listmsg="{{json_encode($data['messaggi'])}}"></messagebox>
-        <hr></hr>
+        <messagebox></messagebox>
+        <hr style="border: 1px grey solid;">
         <grafico  :setstatus="'1'" :points="{{json_encode($data['grafico'])}}" ></grafico>
     
-        
+     
         
         
     </div>
 
         </div>
-        
+        <h6>{{json_encode($data['cruscotto'])}}</h6>
+<p>
+{{$messages}}
+</p>
     </body>
     <script src="{{ asset('/js/app.js')}}"></script>
+ 
 
 </html>

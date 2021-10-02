@@ -1,13 +1,35 @@
 <template>
+<div>
+      <h2>On/Off
+        <div class="move"> 
   <div class="wrapper" :class="{'active-wrapper': status}" @click="status = !status">
     <div  class="toggle" :class="{'active-toggle': status}"/>
   </div>
+  </div>
+  </h2>
+
+
+           <h2>Step
+        <div class="move"> 
+
+      <select :value="'opzione2'" @change="selection($event.target.value)">
+    <option :value="option.label" :key="option.label" v-for="option in this.options">
+      {{ option.label }}
+    </option>
+  </select>
+  </div>
+  </h2>
+  <hr>
+  <hr>
+  </div>
+  
 </template>
 
 <script>
 export default {
   props: [
-            'setstatus'
+            'setstatus',
+            'options'
         ],
   data() {
     return {
@@ -15,13 +37,17 @@ export default {
     };
   },
      created() {
-
         this.status = this.setstatus;
         },
+      methods:{
+selection(type) {
+
+}
+    }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .wrapper,
 .toggle {
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
@@ -36,11 +62,9 @@ export default {
   border: 2px #e3e2e4 solid;
   border-radius: 50px;
 }
-
 .active-wrapper {
   background: #7ad48a;
 }
-
 .toggle {
   position: relative;
   width: 40px;
@@ -50,8 +74,49 @@ export default {
   border-radius: 50px;
   margin: 3px;
 }
-
 .active-toggle {
   transform: translateX(85%);
 }
+
+.custom-select{
+  position: relative;
+  display: block;
+  max-width: 300px;
+  min-width: 120px;
+  margin: 0 auto;
+  border: 1px solid #3C1C78;
+  background-color: #16013E;
+  z-index: 10;
+}
+  select{
+    border: 2px solid black;;
+    outline: black;
+    background: transparent;
+    border-radius: 10px;
+    margin: 0;
+    display: block;
+    padding: 10px 10px 10px 10px;
+    font-size: 17px;
+    color: black;
+  
+  &:after{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    line-height: 38px;
+    content: '\2228';
+    text-align: center;
+    color: #714BB9;
+    font-size: 24px;
+    border-left: 1px solid #3C1C78;
+    z-index: -1;
+  }
+  }
+  .move{
+      float:right;
+      margin-left: 40px;
+  }
+
 </style>

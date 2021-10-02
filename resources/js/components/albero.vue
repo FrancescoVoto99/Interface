@@ -16,7 +16,15 @@ export default {
     
   ,
   data() {
+    nodes: [
+      { id: 1, nome: "KPI6", messaggio: "Tytle1" },
+      { id: 2, pid: 1, nome: "KPI4", messaggio: "Tytle2" },
+      { id: 3, pid: 1, nome: "KPI5", messaggio: "Tytle3" },
+      { id: 4, pid: 2, nome: "KPI1", messaggio: "Tytle4" },
+    { id: 5, pid: 3, nome: "KPI2", messaggio: "Tytle4" },
+    { id: 6, pid: 3, nome: "KPI3", messaggio: "Tytle4" }
 
+    ];
 
 
   },
