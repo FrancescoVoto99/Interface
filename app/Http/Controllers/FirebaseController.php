@@ -11,6 +11,7 @@ use \Kreait\Firebase\Database;
 use App\Models\messages;
 use App\Models\alberi;
 use App\Models\kpis;
+use App\Models\subsystems;
 
 
 class FirebaseController extends Controller
@@ -24,11 +25,12 @@ class FirebaseController extends Controller
         $this->messages = new messages;
         $this->alberi = new alberi;
         $this->kpis = new kpis;
+        $this->subsystems = new subsystems;
     }
     public function index()
     {
         
-        $themessages=$this->kpis->getAllKpi();
+        $themessages=$this->subsystems->getAllSubsystem();
   
         {
             $serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/tirocinio-975e9-firebase-adminsdk-f1gv5-7da7075f22.json');
@@ -59,6 +61,12 @@ class FirebaseController extends Controller
     public function getKpi(){
         $theKpi=$this->kpis->getAllKpi();
         return $theKpi;
+
+    }
+
+    public function getSubsystem(){
+        $theSubsystem=$this->subsystems->getAllSubsystem();
+        return $theSubsystem;
 
     }
 

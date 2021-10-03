@@ -27,23 +27,23 @@
 
 
 <hr style="border: 1px grey solid;">
-        <h3>FCU0
+        <h3>{{this.subsystems[0].name}}
         <div class="move"> 
 
-      <select :value="'opzione2'" :disabled="!this.status" @change="chooseChart($event.target.value)">
-    <option :value="option.label" :key="option.label" v-for="option in this.subsystems.FCU0">
-      {{ option.label }}
+      <select :value="options[this.subsystems[0].status]" :disabled="!this.status" @change="selectionFCU0($event.target.selectedIndex)">
+    <option :value="option" :key="option" v-for="option in options">
+      {{ option }}
     </option>
   </select>
   </div>
   </h3>
   <hr>
 
-        <h3>Win0
+        <h3>{{this.subsystems[1].name}}
         <div class="move"> 
-      <select :value="'opzione1'" :disabled="!this.status" @change="chooseChart($event.target.value)">
-    <option :value="option.label" :key="option.label" v-for="option in this.subsystems.Win0">
-      {{ option.label }}
+      <select :value="options[this.subsystems[1].status]" :disabled="!this.status" @change="selectionWIN0($event.target.selectedIndex)">
+    <option :value="option" :key="option" v-for="option in options">
+      {{ option}}
     </option>
         </select>
         </div>
@@ -55,7 +55,7 @@
 
 
 
-<h3>Shao
+<h3>{{this.subsystems[2].name}}
     <div class="move">
   <div class="wrapper" :class="{'active-wrapper': statussho0}" @click="changeSHA0">
     <div  class="toggle" :class="{'active-toggle': statussho0}"/>
@@ -63,7 +63,7 @@
   </div> 
 </h3>
 <hr>
-<h3>Boiler
+<h3>{{this.subsystems[3].name}}
     <div class="move">
 <div class="wrapper" :class="{'active-wrapper': statusboiler}" @click="changeBoiler">
     <div  class="toggle" :class="{'active-toggle': statusboiler}"/>
@@ -71,7 +71,7 @@
   </div> 
   </h3>
 <hr>
-  <h3>Chiller
+  <h3>{{this.subsystems[4].name}}
 <div class="move"> 
   <div class="wrapper" :class="{'active-wrapper': statuschiller}" @click="changeChillen">
     <div  class="toggle" :class="{'active-toggle': statuschiller}"/>
@@ -79,7 +79,7 @@
 </div>
 </h3>
 <hr>
-  <h3>Summer
+  <h3>{{this.subsystems[5].name}}
     
             <div class="move" >     
                  <div class="wrapper" :class="{'active-wrapper': statussummer}" @click="changeSummer">
@@ -95,28 +95,38 @@
 
 <script>
 export default {
-  props: [
-            'subsystems'
-        ],
+
   data() {
     return {
+        subsystems:[],
       statussho0:"",
       statusboiler: "",
       statuschiller:"",
       statussummer:"",
        status: false,
+       options:["Opzione1","Opzione2","Opzione3","Opzione4"],
     };
   },
      created() {
-        this.statussho0 = this.subsystems.SHA0;
-        this.statusboiler = this.subsystems.Boiler;
-        this.statuschiller = this.subsystems.Chiller;
-        this.statussummer = this.subsystems.Summer;
+
+        },
+    mounted(){
+                    axios.get('./subsystem').then((response) => {
+                // handle success
+                console.log(response.data);
+                this.subsystems=response.data;
+                this.statussho0 = response.data[2].status;
+                this.statusboiler = response.data[3].status;
+                this.statuschiller = response.data[4].status;
+                this.statussummer = response.data[5].status;
+              })
+
         },
       methods:{
         chooseStatus(type) {
         this.status = type;
     },
+ 
       changeSHA0(){
         if(this.status==true){
             this.statussho0=!this.statussho0;
@@ -138,10 +148,16 @@ export default {
            this.statussummer=!this.statussummer;
          }
       },
-
+      selectionFCU0(type) {
+          console.log(type);
+        },
+        selectionWIN0(type){
+             console.log(type);
+        },
 
 
       }
+
 };
 </script>
 

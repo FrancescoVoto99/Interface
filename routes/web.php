@@ -25,3 +25,4 @@ Route::get('firebase','App\Http\Controllers\FirebaseController@index');
 Route::get('/message','App\Http\Controllers\FirebaseController@getMessage');
 Route::get('/albero','App\Http\Controllers\FirebaseController@getAlbero');
 Route::get('/kpi','App\Http\Controllers\FirebaseController@getKpi');
+Route::get('/subsystem','App\Http\Controllers\FirebaseController@getSubsystem');
