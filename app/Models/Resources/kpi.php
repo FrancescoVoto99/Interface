@@ -11,4 +11,9 @@ class kpi extends Model {
     public $timestamps = false;
 
 
+    public function valueChart() {
+        return $this->hasMany(kpihistory::class);
+    }
+
+
 }

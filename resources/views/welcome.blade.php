@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="//unpkg.com/vue/dist/vue.js"></script>
+<script src="//unpkg.com/element-ui@2.15.6/lib/index.js"></script>
 
         <title>Laravel</title>
 
@@ -22,6 +24,31 @@
             div {
                 border-style: solid;
 }
+@import url("//unpkg.com/element-ui@2.15.6/lib/theme-chalk/index.css");
+.el-row {
+    margin-bottom: 20px;
+  }
+  .el-col {
+    border-radius: 4px;
+  }
+  .bg-purple-dark {
+    background: #99a9bf;
+  }
+  .bg-purple {
+    background: #d3dce6;
+  }
+  .bg-purple-light {
+    background: #e5e9f2;
+  }
+  .grid-content {
+    border-radius: 4px;
+    min-height: 36px;
+  }
+  .row-bg {
+    padding: 10px 0;
+    background-color: #f9fafc;
+  }
+
 
         #app { 
             
@@ -33,7 +60,14 @@
     <body class="antialiased">
         
         <div id="app">
-   
+
+<el-row>
+  <el-col :span="8"><div class="grid-content bg-purple"></div></el-col>
+  <el-col :span="8"><div class="grid-content bg-purple-light">aaaa</div></el-col>
+  <el-col :span="8"><div class="grid-content bg-purple">aaaa</div></el-col>
+</el-row>
+
+
     <div style="float:left; margin: 0px 50px; width=33%;">
         <h2>Controller</h2>
     
@@ -79,7 +113,9 @@
 {{$messages}}
 </p>
     </body>
+    <script src="{{ asset('/css/app.css')}}"></script>
     <script src="{{ asset('/js/app.js')}}"></script>
+
  
 
 </html>
