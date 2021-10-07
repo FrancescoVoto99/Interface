@@ -3,8 +3,13 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="//unpkg.com/vue/dist/vue.js"></script>
-<script src="//unpkg.com/element-ui@2.15.6/lib/index.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 
         <title>Laravel</title>
 
@@ -24,30 +29,6 @@
             div {
                 border-style: solid;
 }
-@import url("//unpkg.com/element-ui@2.15.6/lib/theme-chalk/index.css");
-.el-row {
-    margin-bottom: 20px;
-  }
-  .el-col {
-    border-radius: 4px;
-  }
-  .bg-purple-dark {
-    background: #99a9bf;
-  }
-  .bg-purple {
-    background: #d3dce6;
-  }
-  .bg-purple-light {
-    background: #e5e9f2;
-  }
-  .grid-content {
-    border-radius: 4px;
-    min-height: 36px;
-  }
-  .row-bg {
-    padding: 10px 0;
-    background-color: #f9fafc;
-  }
 
 
         #app { 
@@ -55,52 +36,49 @@
     margin: 0px auto;
     text-align: center;
     }
+    
         </style>
     </head>
     <body class="antialiased">
         
         <div id="app">
 
-<el-row>
-  <el-col :span="8"><div class="grid-content bg-purple"></div></el-col>
-  <el-col :span="8"><div class="grid-content bg-purple-light">aaaa</div></el-col>
-  <el-col :span="8"><div class="grid-content bg-purple">aaaa</div></el-col>
-</el-row>
-
-
-    <div style="float:left; margin: 0px 50px; width=33%;">
-        <h2>Controller</h2>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
     
-        <togglevs  :options='{{json_encode($data["subsystems"]["FCU0"])}}'></togglevs>
-        <hr style="border: 1px grey solid;">
+        <togglevs ></togglevs>
+            </div>
+            <div class="col">
+         <h1>Diagrams</h1>
+        <albero></albero>
+            </div>
+            <div class="col">
+        <messagebox></messagebox>
+            </div>
+        </div>
+        </div>   
 
+        <div class="container-fluid">
+        <div class="row">
+        <div class="col-3">
+        <subsystems></subsystems>
+        </div>
+        <div class="col">
         
-  
-            <div style="float:right">        
-        <subsystems :subsystems='{{json_encode($data["subsystems"])}}'></subsystems>
-    </div>
-        
-   
+         <cruscotto></cruscotto>
+        </div>
+        <div class="col">
+        <grafico  :setstatus="'1'" :points="{{json_encode($data['grafico'])}}" ></grafico>
+        </div>
+        </div>
+        </div>
 
-        
-    
-   
-    </div>
-    <div style="float:left">
-        <h2>Diagrams</h2>
-    <albero></albero>
-    
-    <hr style="border: 1px grey solid;">
-
-
-    <cruscotto></cruscotto>
-    </div>
+ 
 
            
       
-        <messagebox></messagebox>
-        <hr style="border: 1px grey solid;">
-        <grafico  :setstatus="'1'" :points="{{json_encode($data['grafico'])}}" ></grafico>
+        
     
      
         
@@ -108,7 +86,7 @@
     </div>
 
         </div>
-        <h6>{{json_encode($data['cruscotto'])}}</h6>
+        <h6>{{json_encode($data['grafico'])}}</h6>
 <p>
 {{$messages}}
 </p>

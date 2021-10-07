@@ -30,7 +30,7 @@
         "@balkangraph/orgchart.js": "^6.1.998",
         "@vue/cli-plugin-babel": "^4.1.1",
         "chartkick": "^4.0.5",
-        "element-ui": "^2.6.3",
+        "element-ui": "^2.15.6",
         "fusioncharts": "^3.14.0-sr.1",
         "highcharts": "^8.0.2",
         "highcharts-vue": "^1.3.5",

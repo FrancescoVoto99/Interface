@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    
 
     <OrgChart id="tree" ref="tree"></OrgChart>
   </div>

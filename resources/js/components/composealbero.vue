@@ -17,13 +17,15 @@ export default {
   },
    data() {
       return {
-        nodi:[]
+        nodi:[],
+        nodo:'1',
       }
     },
     
 
   mounted() {
 
+           console.log("response");
 
         axios.get('./albero').then((response) => {
                 // handle success
@@ -39,15 +41,27 @@ export default {
                 "stato":obj.status
                 }
                 }
-                );
+        );
 
                 this.nodi = idModified;
+                 console.log(document.querySelector("[node-id ='3'] rect"))
+                console.log("ok")
+                
                 this.getChart();
+               
+               
               })
+             
       
     
       //document.querySelectorA("[ data - n - id ]").style.background = 'red';
   },
+  updated: function () {
+  this.$nextTick(function () {
+     console.log(document.querySelector("[node-id ='3'] rect").fill)
+     
+  })
+},
   computed: {
     getChart() {
       return {
@@ -81,7 +95,8 @@ min : true,
   color: #2c3e50;
   margin-top: 0px;
 }
- [ node-id ] { 
+  
+ [ node-id = '1'] rect{ 
         fill : #750000; } 
 h3 {
   margin:  0 0;

@@ -63,9 +63,13 @@
   margin-left: 0;
   border:1px solid #EEE;
   overflow-y: auto;
-   width: 30%;
+
   height: 100px;
 
+}
+ul{
+   text-align: left;
+padding-inline-start:0px
 }
 #add{
  margin-right:-100px;

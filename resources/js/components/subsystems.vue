@@ -164,7 +164,7 @@ export default {
 
 <style lang="scss" scoped>
 .btn-group {
-  width: 150px;
+  width: 144px;
   border-radius: 8px;
   border: 1px solid #e2e2ea;
   height: 34px;

@@ -17,7 +17,7 @@
 <div>
     <fusioncharts style="float:left;"
       :type="typeWidget"
-      :width="250"
+      :width="200"
       :height="250"
       :dataFormat="dataFormat"
       :dataSource="dataSourceWidget"
@@ -27,7 +27,7 @@
 
     <fusioncharts 
       :type="typeWidget"
-      :width="250"
+      :width="200"
       :height="250"
       :dataFormat="dataFormat"
       :dataSource="dataSourceWidget2"

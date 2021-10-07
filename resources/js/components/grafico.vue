@@ -14,7 +14,6 @@
   <hr>
     <div>
       <highcharts
-       style="width: 33%"
         class="chart"
         :options="chartOptions"
         :updateArgs="updateArgs"
@@ -119,7 +118,7 @@ export default {
     background: transparent;
     border-radius: 10px;
     display: block;
-    padding: 10px 10px 10px 10px;
+    padding: 5px 5px 5px 5px;
     font-size: 17px;
     color: black;
   

@@ -1,5 +1,7 @@
 <template>
 <div>
+  <h1>Controller</h1>
+  <hr>
       <h2>On/Off
         <div class="move"> 
   <div class="wrapper" :class="{'active-wrapper': status}" @click="status = !status">
@@ -8,36 +10,32 @@
   </div>
   </h2>
 
-
+<hr>
            <h2>Step
         <div class="move"> 
 
-      <select :value="'opzione2'" @change="selection($event.target.value)">
-    <option :value="option.label" :key="option.label" v-for="option in this.options">
-      {{ option.label }}
+      <select :value="'Opzione1'" @change="selection($event.target.value)">
+    <option :value="option" :key="option" v-for="option in this.options">
+      {{ option }}
     </option>
   </select>
   </div>
   </h2>
-  <hr>
-  <hr>
+   
   </div>
   
 </template>
 
 <script>
 export default {
-  props: [
-            'setstatus',
-            'options'
-        ],
   data() {
     return {
-      status: ""
+      status: "1",
+      options:["Opzione1","Opzione2","Opzione3","Opzione4"],
     };
   },
      created() {
-        this.status = this.setstatus;
+        //this.status = this.setstatus;
         },
       methods:{
 selection(type) {
@@ -95,7 +93,7 @@ selection(type) {
     border-radius: 10px;
     margin: 0;
     display: block;
-    padding: 10px 10px 10px 10px;
+    padding: 5px 5px 5px 5px;
     font-size: 17px;
     color: black;
   

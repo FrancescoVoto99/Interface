@@ -12,6 +12,7 @@ use App\Models\messages;
 use App\Models\alberi;
 use App\Models\kpis;
 use App\Models\subsystems;
+use App\Models\kpihistorys;
 
 
 class FirebaseController extends Controller
@@ -26,11 +27,12 @@ class FirebaseController extends Controller
         $this->alberi = new alberi;
         $this->kpis = new kpis;
         $this->subsystems = new subsystems;
+        $this->kpihistorys = new kpihistorys;
     }
     public function index()
     {
         
-        $themessages=$this->subsystems->getAllSubsystem();
+        $themessages=$this->kpihistorys->getKpiHistory(1);
   
         {
             $serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/tirocinio-975e9-firebase-adminsdk-f1gv5-7da7075f22.json');
