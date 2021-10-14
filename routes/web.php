@@ -18,11 +18,12 @@ Route::get('/', function () {
 
 });
 
-Route::get('/interface', 'App\Http\Controllers\InterfaceController@interface')
+Route::get('/interfaces', 'App\Http\Controllers\InterfacesController@interface')
         ->name('interface');
 
-Route::get('firebase','App\Http\Controllers\FirebaseController@index');
-Route::get('/message','App\Http\Controllers\FirebaseController@getMessage');
-Route::get('/albero','App\Http\Controllers\FirebaseController@getAlbero');
-Route::get('/kpi','App\Http\Controllers\FirebaseController@getKpi');
-Route::get('/subsystem','App\Http\Controllers\FirebaseController@getSubsystem');
+Route::get('interface','App\Http\Controllers\InterfaceController@index');
+Route::get('/message','App\Http\Controllers\InterfaceController@getMessage');
+Route::get('/albero','App\Http\Controllers\InterfaceController@getAlbero');
+Route::get('/kpi','App\Http\Controllers\InterfaceController@getKpi');
+Route::get('/subsystem','App\Http\Controllers\InterfaceController@getSubsystem');
+Route::get('/kpihistory','App\Http\Controllers\InterfaceController@getKpiHistory');

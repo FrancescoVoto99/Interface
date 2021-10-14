@@ -61,15 +61,15 @@
 
         <div class="container-fluid">
         <div class="row">
-        <div class="col-3">
+        <div class="col-3" style="min-width: 300px;">
         <subsystems></subsystems>
         </div>
         <div class="col">
         
-         <cruscotto></cruscotto>
+         <cruscotto style="min-width: 300px;"></cruscotto>
         </div>
-        <div class="col">
-        <grafico  :setstatus="'1'" :points="{{json_encode($data['grafico'])}}" ></grafico>
+        <div class="col" style="min-width: 300px;">
+        <grafico></grafico>
         </div>
         </div>
         </div>
@@ -86,10 +86,10 @@
     </div>
 
         </div>
-        <h6>{{json_encode($data['grafico'])}}</h6>
 <p>
 {{$messages}}
 </p>
+
     </body>
     <script src="{{ asset('/css/app.css')}}"></script>
     <script src="{{ asset('/js/app.js')}}"></script>

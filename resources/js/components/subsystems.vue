@@ -21,7 +21,7 @@
         >Show</span
       >
     </div>
-    </div>
+  </div>
     </h3>
 
 
@@ -163,6 +163,7 @@ export default {
 
 
 <style lang="scss" scoped>
+
 .btn-group {
   width: 144px;
   border-radius: 8px;

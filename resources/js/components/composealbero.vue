@@ -7,7 +7,7 @@
 <script>
 import OrgChart from "@balkangraph/orgchart.js/orgchart";
 
-
+import $ from 'jquery';
 import HelloWorld from "./albero.vue";
 
 export default {
@@ -44,8 +44,8 @@ export default {
         );
 
                 this.nodi = idModified;
-                 console.log(document.querySelector("[node-id ='3'] rect"))
-                console.log("ok")
+                 console.log( $("svg"));
+                console.log("ok") 
                 
                 this.getChart();
                
@@ -58,12 +58,20 @@ export default {
   },
   updated: function () {
   this.$nextTick(function () {
-     console.log(document.querySelector("[node-id ='3'] rect").fill)
+     console.log(document.getElementById("orgchart").querySelectorAll("[node-id='3']"))
      
   })
 },
   computed: {
     getChart() {
+       console.log( $("svg"));
+       console.log(document.querySelectorAll("[data-n-id='1'] rect"));
+       var rect = document.getElementById("orgchart");
+      
+       var  bbox =rect.getElementsByTagName("svg");
+       var prova=bbox;
+        console.log(bbox);
+        
       return {
           
         chart: new OrgChart(document.getElementById("orgchart"), {

@@ -37,22 +37,20 @@ dataModule(Highcharts);
 Vue.use(HighchartsVue);
 export default {
       props: [
-            'points',
+           
            
         ],
   data() {
     return {
+      points:[],
+      
       status: "",
       updateArgs: [true, true, { duration: 500 }],   
       data: [
-          
-        {
-          name: "Series 2",
-          data: [21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
-        },
 
       ],
       chartOptions: {
+        
         chart: {
           type: "line",
         },
@@ -85,9 +83,17 @@ export default {
     
   },
   mounted() {
-        
-           this.chartOptions.series.push(this.points.KPI1);
-           this.chartOptions.title.text=this.points.KPI1.name;
+               axios.get('./kpihistory').then((response) => {
+                // handle success
+                console.log(response.data);
+
+               this.points=response.data;
+                this.chartOptions.series.push(this.points.KPI1);
+              this.chartOptions.title.text=this.points.KPI1.name;
+              })
+    
+  
+          
         }
 };
 </script>
