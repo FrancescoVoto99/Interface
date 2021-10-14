@@ -18,10 +18,8 @@ Route::get('/', function () {
 
 });
 
-Route::get('/interfaces', 'App\Http\Controllers\InterfacesController@interface')
-        ->name('interface');
 
-Route::get('interface','App\Http\Controllers\InterfaceController@index');
+Route::get('/interface','App\Http\Controllers\InterfaceController@index');
 Route::get('/message','App\Http\Controllers\InterfaceController@getMessage');
 Route::get('/albero','App\Http\Controllers\InterfaceController@getAlbero');
 Route::get('/kpi','App\Http\Controllers\InterfaceController@getKpi');

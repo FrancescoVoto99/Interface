@@ -13,8 +13,10 @@
    
   </div>
   <hr>
-  <div id="add">
+  <div >
   <el-button @click="Selection()">applica</el-button>
+ </div>
+ <div id="add">
  </div>
 
   </div>
@@ -34,7 +36,7 @@
 
     methods: {
       Selection() {
-        document.getElementById("add").innerHTML = "You have selected: " + this.msgselected;
+        document.getElementById("add").innerHTML= "<p>You have selected: " + this.msgselected+"</p>";
       
       },
       handleSelectionChange(val) {

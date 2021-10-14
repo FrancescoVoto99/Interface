@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src = "www.[localhost].com/OrgChart.js" ></script>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -11,7 +12,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
-        <title>Laravel</title>
+        <title>Interface</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -26,9 +27,6 @@
                 font-family: 'Nunito', sans-serif;
                 
             }
-            div {
-                border-style: solid;
-}
 
 
         #app { 
@@ -43,51 +41,42 @@
         
         <div id="app">
 
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <div class="row">
-            <div class="col-3">
+            <div class="col border bg-light">
     
         <togglevs ></togglevs>
             </div>
-            <div class="col">
+            <div class="col border bg-light">
          <h1>Diagrams</h1>
         <albero></albero>
             </div>
-            <div class="col">
+            
+            <div class="col  border bg-light">
         <messagebox></messagebox>
             </div>
         </div>
-        </div>   
-
-        <div class="container-fluid">
+       
         <div class="row">
-        <div class="col-3" style="min-width: 300px;">
-        <subsystems></subsystems>
+        <div class="col border bg-light" style="min-width: 300px;">
+        <subsystems ></subsystems>
+        
         </div>
-        <div class="col">
+        <div class="col border bg-light">
         
          <cruscotto style="min-width: 300px;"></cruscotto>
         </div>
-        <div class="col" style="min-width: 300px;">
+        <div class="col border bg-light" style="min-width: 300px;">
         <grafico></grafico>
         </div>
         </div>
         </div>
 
- 
-
-           
-      
-        
-    
-     
-        
-        
     </div>
 
         </div>
 <p>
-{{$messages}}
+
 </p>
 
     </body>

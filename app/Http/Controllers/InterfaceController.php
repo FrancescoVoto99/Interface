@@ -31,13 +31,8 @@ class InterfaceController extends Controller
     }
     public function index()
     {
+            return view('welcome');
         
-        $themessages=$this->kpihistorys->getKpiHistory();
-  
-        {
-            return view('welcome')
-            ->with('messages', $themessages);
-        }
     }
     public function getMessage(){
         $themessages=$this->messages->getAllMessages();

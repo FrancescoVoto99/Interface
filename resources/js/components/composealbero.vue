@@ -8,7 +8,7 @@
 import OrgChart from "@balkangraph/orgchart.js/orgchart";
 
 import $ from 'jquery';
-import HelloWorld from "./albero.vue";
+
 
 export default {
 
