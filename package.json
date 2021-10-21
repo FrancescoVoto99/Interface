@@ -27,7 +27,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "@balkangraph/orgchart.js": "^6.1.998",
+        "@balkangraph/orgchart.js": "^6.7.3",
         "@vue/cli-plugin-babel": "^4.1.1",
         "chartkick": "^4.0.5",
         "element-ui": "^2.15.6",

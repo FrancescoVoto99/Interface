@@ -1,7 +1,7 @@
 <template>
 
   <div>
-    <h2>Messaggi</h2>
+    <h2>Messages</h2>
  
     
   <div class="box">

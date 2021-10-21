@@ -81,7 +81,7 @@ export default {
            showValue: "1",
    
          // caption: "KPI3 -Confort",
-          subcaption: "Valore Attuale",
+          subcaption: "Current Value",
           lowerLimit: "0",
           upperLimit: "100",
           theme: "zune"
@@ -134,7 +134,7 @@ export default {
            showValue: "1",
 
        //   caption: "KPI3 -Confort",
-          subcaption: "Valore Atteso",
+          subcaption: "Expected Value",
           lowerLimit: "0",
           upperLimit: "100",
           theme: "zune",

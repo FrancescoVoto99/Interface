@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import OrgChart from "@balkangraph/orgchart.js/orgchart";
+
 
 import $ from 'jquery';
 
@@ -30,61 +30,65 @@ export default {
         axios.get('./albero').then((response) => {
                 // handle success
                 console.log(response.data);
-                
+                 var img="";
           let idModified = response.data.map(
+           
                obj => {
+                 img="";
+                 if(obj.status==1){
+                  img="https://thumbs.dreamstime.com/z/segno-di-spunta-verde-111802378.jpg";
+                 }
                   return {
                 "id" : obj.nodeId,
                 "pid":obj.	parentId,
+                "img": img,
                 "messaggio":obj.description,
                 "nome":obj.name,
-                "stato":obj.status
                 }
                 }
         );
 
                 this.nodi = idModified;
-                 console.log( $("svg"));
-                console.log("ok") 
-                
                 this.getChart();
-               
+
                
               })
-             
+
+
       
     
       //document.querySelectorA("[ data - n - id ]").style.background = 'red';
   },
   updated: function () {
   this.$nextTick(function () {
-     console.log(document.getElementById("orgchart").querySelectorAll("[node-id='3']"))
+  
+             
+
+
      
   })
 },
   computed: {
     getChart() {
-       console.log( $("svg"));
-       console.log(document.querySelectorAll("[data-n-id='1'] rect"));
-       var rect = document.getElementById("orgchart");
+
+    
+      //console.log( firstG);
+ 
       
-       var  bbox =rect.getElementsByTagName("svg");
-       var prova=bbox;
-        console.log(bbox);
-        
       return {
           
         chart: new OrgChart(document.getElementById("orgchart"), {
             enableSearch: false,
             mouseScrool: OrgChart.action.none, 
-            enableKeyNavigation: true,
+            enableKeyNavigation: false,
             
 min : true,
             
             scaleInitial : 0.5,
             orientation: OrgChart.orientation.bottom,
           nodeBinding: {
-            field_0: "nome"
+            field_0: "nome",
+            img_0:"img"
           },
           nodes: this.nodi,
         })
@@ -104,8 +108,7 @@ min : true,
   margin-top: 0px;
 }
   
- [ node-id = '1'] rect{ 
-        fill : #750000; } 
+
 h3 {
   margin:  0 0;
 }
