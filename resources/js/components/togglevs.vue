@@ -4,7 +4,7 @@
   <hr>
       <h2>On/Off
         <div class="move"> 
-  <div class="wrapper" :class="{'active-wrapper': status}" @click="status = !status">
+  <div class="wrapper" :class="{'active-wrapper': status}" @click="changeState">
     <div  class="toggle" :class="{'active-toggle': status}"/>
   </div>
   </div>
@@ -30,15 +30,17 @@
 export default {
   data() {
     return {
-      status: "1",
+      status: 1,
       options:["Opzione1","Opzione2","Opzione3","Opzione4"],
     };
   },
-     created() {
-        //this.status = this.setstatus;
-        },
       methods:{
 selection(type) {
+
+},
+changeState(){
+  this.status=!this.status;
+  console.log(this.status);
 
 }
     }
@@ -75,17 +77,6 @@ selection(type) {
 .active-toggle {
   transform: translateX(85%);
 }
-
-.custom-select{
-  position: relative;
-  display: block;
-  max-width: 300px;
-  min-width: 120px;
-  margin: 0 auto;
-  border: 1px solid #3C1C78;
-  background-color: #16013E;
-  z-index: 10;
-}
   select{
     border: 2px solid black;;
     outline: black;
@@ -96,21 +87,6 @@ selection(type) {
     padding: 5px 5px 5px 5px;
     font-size: 17px;
     color: black;
-  
-  &:after{
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 50px;
-    height: 100%;
-    line-height: 38px;
-    content: '\2228';
-    text-align: center;
-    color: #714BB9;
-    font-size: 24px;
-    border-left: 1px solid #3C1C78;
-    z-index: -1;
-  }
   }
   .move{
       float:right;

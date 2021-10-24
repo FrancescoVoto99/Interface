@@ -6,39 +6,23 @@
 
 <script>
 
-
-import $ from 'jquery';
-
-
 export default {
-
-  components: {
-    //HelloWorld
-  },
    data() {
       return {
         nodi:[],
-        nodo:'1',
       }
     },
-    
-
   mounted() {
-
-           console.log("response");
-
-        axios.get('./albero').then((response) => {
-                // handle success
-                console.log(response.data);
-                 var img="";
-          let idModified = response.data.map(
-           
-               obj => {
-                 img="";
-                 if(obj.status==1){
-                  img="https://thumbs.dreamstime.com/z/segno-di-spunta-verde-111802378.jpg";
+    
+    axios.get('./albero').then((response) => {
+      var img="";
+        let idModified = response.data.map(
+          obj => {
+            img="";
+              if(obj.status==1){
+                img="https://png2.cleanpng.com/sh/65c940fd340b17185e07f25712a7e392/L0KzQYm3VsA0N5lxR91yc4Pzfri0gBhma5wyhdN7az32ib7pjBwua51uiJ9qcoSwcr3ogBsua5lqe902bXH1e368gsE0aWY8SdcCYke1QXA8VsE3QWk8UaMAMkizQYW4WcM6PGo2RuJ3Zx==/kisspng-check-mark-symbol-clip-art-black-check-mark-5b13a571e7b721.5616987915280141939491.png";
                  }
-                  return {
+              return {
                 "id" : obj.nodeId,
                 "pid":obj.	parentId,
                 "img": img,
@@ -47,46 +31,22 @@ export default {
                 }
                 }
         );
-
-                this.nodi = idModified;
-                this.getChart();
-
-               
+          this.nodi = idModified;
+          this.getChart();
               })
-
-
-      
-    
-      //document.querySelectorA("[ data - n - id ]").style.background = 'red';
   },
-  updated: function () {
-  this.$nextTick(function () {
-  
-             
-
-
-     
-  })
-},
   computed: {
     getChart() {
-
-    
-      //console.log( firstG);
- 
-      
       return {
           
         chart: new OrgChart(document.getElementById("orgchart"), {
             enableSearch: false,
             mouseScrool: OrgChart.action.none, 
             enableKeyNavigation: false,
-            
-min : true,
-            
+            min : true,
             scaleInitial : 0.5,
             orientation: OrgChart.orientation.bottom,
-          nodeBinding: {
+            nodeBinding: {
             field_0: "nome",
             img_0:"img"
           },
@@ -107,30 +67,12 @@ min : true,
   color: #2c3e50;
   margin-top: 0px;
 }
-  
-
-h3 {
-  margin:  0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 #orgchart {
                             
-                            width: 500px;
-                            height:250px;
-                            overflow: hidden;
+  width: 500px;
+  height:250px;
+  overflow: hidden;
  }
-rect:focus{
-    fill: #F67D01 ;
-}
+
 
 </style>

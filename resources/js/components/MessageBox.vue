@@ -10,7 +10,6 @@
       <input type="radio" v-model="msgselected" name="msgselected"  :value="message.messageId"> {{message.content}}
    </li> 
     </ul>  
-   
   </div>
   <hr>
   <div >
@@ -28,7 +27,6 @@
     data() {
       return {
         multipleSelection: [],
-        images:[{imgId:1},{imgId:2},{imgId:3}],
         msgselected:1,
         listmsg:[]
       }
@@ -46,9 +44,7 @@
       mounted()  {
         console.log("response");
         axios.get('./message').then((response) => {
-                // handle success
                 console.log(response.data);
-                //now this refers to your vue instance and this can access you data property
                 this.listmsg = response.data;
               })
       
@@ -65,9 +61,7 @@
   margin-left: 0;
   border:1px solid #EEE;
   overflow-y: auto;
-
   height: 100px;
-
 }
 ul{
    text-align: left;

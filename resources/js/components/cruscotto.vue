@@ -1,14 +1,13 @@
 <template>
   <div id="app">
     <h2 style="text-align: left;">KPI</h2>
-    <h3>Select KPI
-      
+    <h2>Select KPI
     <select @change="chooseChart($event.target.value)">
     <option :value="index" :key="val.name" v-for="(val, index) in this.kpis">
       {{ val.name }}
     </option>
   </select>
-  </h3>
+  </h2>
   
 <hr style="border: 1px grey solid;">
 
@@ -17,18 +16,18 @@
 <div>
     <fusioncharts style="float:left;"
       :type="typeWidget"
-      :width="200"
-      :height="250"
+      :width="205"
+      :height="230"
       :dataFormat="dataFormat"
       :dataSource="dataSourceWidget"
       :events="events"
       ref="fc"
     ></fusioncharts>
 
-    <fusioncharts 
+    <fusioncharts style="float:left;"
       :type="typeWidget"
-      :width="200"
-      :height="250"
+      :width="205"
+      :height="230"
       :dataFormat="dataFormat"
       :dataSource="dataSourceWidget2"
       :events="events"
@@ -47,7 +46,6 @@
 <script>
 import Vue from "vue";
 import VueFusionCharts from "vue-fusioncharts";
-// import FusionCharts modules and resolve dependency
 import FusionCharts from "fusioncharts";
 import Charts from "fusioncharts/fusioncharts.charts";
 import Widgets from "fusioncharts/fusioncharts.widgets";
@@ -57,7 +55,6 @@ import FusionTheme from "fusioncharts/themes/fusioncharts.theme.zune";
 Vue.use(VueFusionCharts, FusionCharts, Charts, Widgets, FusionTheme);
 
 console.log(FusionCharts);
-
 export default {
   name: "App",
 
@@ -71,17 +68,15 @@ export default {
       dataFormat: "json",
       dataSourceWidget: {
         chart: {
-         
-      gaugeOuterRadius: "90",
-      gaugeInnerRadius: "40",
+      gaugeOuterRadius: "68",
+      gaugeInnerRadius: "29",
       pivotRadius: "10",
        majorTMNumber: "9",
       minorTMNumber: "4",
       valueBelowPivot: "1",
            showValue: "1",
-   
-         // caption: "KPI3 -Confort",
-          subcaption: "Current Value",
+          caption: "Current Value",
+          captionHorizontalPadding: "2",
           lowerLimit: "0",
           upperLimit: "100",
           theme: "zune"
@@ -125,16 +120,14 @@ export default {
       },
        dataSourceWidget2: {
         chart: {
-     gaugeOuterRadius: "90",
-      gaugeInnerRadius: "40",
+     gaugeOuterRadius: "68",
+      gaugeInnerRadius: "29",
       pivotRadius: "10",
        majorTMNumber: "9",
       minorTMNumber: "4",
       valueBelowPivot: "1",
            showValue: "1",
-
-       //   caption: "KPI3 -Confort",
-          subcaption: "Expected Value",
+          caption: "Expected Value",
           lowerLimit: "0",
           upperLimit: "100",
           theme: "zune",
@@ -177,18 +170,6 @@ export default {
         }
       },
       
-      dataSource: {
-        chart: {
-          caption: "Monthly revenue for last year",
-          subCaption: "Harry's SuperMart",
-          xAxisName: "Month",
-          yAxisName: "Revenues (In USD)",
-          numberPrefix: "$",
-          theme: "zune"
-        }
-        
-       
-      },
       events: {
         dataPlotRollOver: function(e) {
           console.log(e.eventType);
@@ -209,7 +190,6 @@ export default {
   },
  mounted() {
             axios.get('./kpi').then((response) => {
-                // handle success
                 console.log(response.data);
                 
           let idModified = response.data.map(
@@ -246,16 +226,6 @@ export default {
   left: 10%;
 
 }
-.custom-select{
-  position: relative;
-  display: block;
-  max-width: 300px;
-  min-width: 120px;
-  margin: 0 auto;
-  border: 1px solid #3C1C78;
-  background-color: #16013E;
-  z-index: 10;
-}
   select{
     margin-right: auto;
     margin-left: auto;
@@ -267,21 +237,6 @@ export default {
     padding: 5px 5px 5px 5px;
     font-size: 17px;
     color: black;
-  
-  &:after{
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 50px;
-    height: 100%;
-    line-height: 38px;
-    content: '\2228';
-    text-align: center;
-    color: #714BB9;
-    font-size: 24px;
-    border-left: 1px solid #3C1C78;
-    z-index: -1;
-  }
   }
   .move{
       float:right;

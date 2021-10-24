@@ -3,7 +3,6 @@
 
     <h2 style="text-align: left-center;">History</h2>
     <h2>Select KPI
-   
       <select :value="'KPI1'" @change="chooseChart($event.target.value)">
     <option :value="chart.name" :key="chart.name" v-for="chart in this.points">
       {{ chart.name }}
@@ -104,18 +103,6 @@ export default {
 .sposta {
   position: relative;
   float: right;
- 
-
-}
-.custom-select{
-  position: relative;
-  display: block;
-  max-width: 300px;
-  min-width: 120px;
-  margin: 0 auto;
-  border: 1px solid #3C1C78;
-  background-color: #16013E;
-  z-index: 10;
 }
   select{
     margin: auto;
@@ -127,21 +114,6 @@ export default {
     padding: 5px 5px 5px 5px;
     font-size: 17px;
     color: black;
-  
-  &:after{
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 50px;
-    height: 100%;
-    line-height: 38px;
-    content: '\2228';
-    text-align: center;
-    color: #714BB9;
-    font-size: 24px;
-    border-left: 1px solid #3C1C78;
-    z-index: -1;
-  }
   }
   .move{
       float:right;

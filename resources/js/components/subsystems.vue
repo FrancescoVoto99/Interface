@@ -170,33 +170,27 @@ export default {
   border: 1px solid #e2e2ea;
   height: 34px;
   font-size: 14px;
-
   & > span:not(:last-child) {
     border-right: 1px solid rgba(226, 226, 234, 1);
   }
 }
-
 .status-btn {
   cursor: pointer;
   display: inline-block;
   color: rgba(105, 105, 116, 1);
   line-height: 30px;
   text-align: center;
-
   width: 70px;
   box-sizing: border-box;
-
   &:hover {
     color: rgba(255, 140, 8, 1);
   }
 }
-
 .achieve-btn {
   background: rgba(255, 246, 236, 1);
   border-radius: 8px 0px 0px 8px;
   position: relative;
   color: rgba(255, 140, 8, 1);
-
   &:after {
     content: "";
     display: block;
@@ -230,7 +224,7 @@ export default {
     border: 1px solid rgba(255, 140, 8, 1);
   }
 }
-.wrapper,
+
 .toggle {
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
     transition: all 300ms ease;
@@ -262,16 +256,7 @@ export default {
 .active-toggle {
   transform: translateX(85%);
 }
-.custom-select{
-  position: relative;
-  display: block;
-  max-width: 300px;
-  min-width: 120px;
-  margin: 0 auto;
-  border: 1px solid #3C1C78;
-  background-color: #16013E;
-  z-index: 10;
-}
+
   select{
     border: 2px solid black;;
     outline: black;
@@ -282,21 +267,7 @@ export default {
     padding: 5px 5px 5px 5px;
     font-size: 17px;
     color: black;
-  
-  &:after{
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 50px;
-    height: 100%;
-    line-height: 38px;
-    content: '\2228';
-    text-align: center;
-    color: #714BB9;
-    font-size: 24px;
-    border-left: 1px solid #3C1C78;
-    z-index: -1;
-  }
+
   }
   .move{
       float:right;
